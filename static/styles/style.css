@@ -1,0 +1,22 @@
+.title {
+    text-align:center
+}
+
+.subtitle{
+    text-align:center
+}
+
+.video-feed{
+    text-align:center
+}
+
+.flex-container {
+    display:flex;
+    flex-direction:row;
+
+}
+
+.center {
+    justify-content: center;
+    align-items:center;
+}

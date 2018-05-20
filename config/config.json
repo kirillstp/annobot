@@ -1,0 +1,14 @@
+{
+    "motor": {
+        "left": { 
+            "enable": "12",
+            "input1": "10",
+            "input2": "8"
+        },
+        "right" : {
+            "enable": "11",
+            "input1": "13",
+            "input2": "15"
+        }
+    }    
+}
