@@ -1,17 +1,20 @@
 import json
 
-FILEPATH = 'config.json'
 
 class Config(object):
-    def __init__(self):
-        self.filepath = self.FILEPATH
+    def __init__(self,config_path):
+        self.filepath = config_path
         self._config = {}
         self.open()
 
-    def open():
+    def open(self):
         f = open(self.filepath)
         self._config = json.load(f)
 
-    @config.getter
     def config(self):
         return self._config
+
+
+if __name__ == "__main__":
+    config = Config('../config.json').config()
+    print(config)

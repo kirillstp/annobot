@@ -1,0 +1,33 @@
+{
+    "explorer.confirmDragAndDrop": false,
+    "deploy.reloaded": {
+        "packages": [
+            {
+                "name": "AnnoBOT",
+                "description": "AnnoBOT",
+                "files": [
+                    "**/*.py",
+                    "/*.js",
+                    "/*.css"
+                ],
+                "exclude": [
+                    "tests/**",
+                    ".git/**"
+                ],
+                "deployOnSave": false
+            }
+        ],
+        "targets": [
+            {
+                "type": "sftp",
+                "name": "PI",
+                "description": "RasberryPI",
+                "dir": "/home/pi/Projects/AnnoBOT",
+                "host": "192.168.1.24", "port": 22,
+                "user": "pi",
+                "password": "raspberry",
+                "checkBeforeDeploy": true,
+            },
+        ]
+    }
+}

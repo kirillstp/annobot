@@ -1,4 +1,4 @@
-from sensorplatform import Motor
+from sensorplatform.motor import Motor
 
 
 class Drivetrain:
