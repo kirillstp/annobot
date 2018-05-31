@@ -1,4 +1,5 @@
 from flask import Flask, render_template, Response
+import json
 from components import Camera
 from components import Drivetrain
 from components import Headlights
@@ -59,7 +60,9 @@ def drivetrain_turn_right():
 @app.route('/headlights/toggle')
 def headlights_toggle():
     hl.toggle()
-    return hl.get_state()
+    return  Response(json.dumps({
+            "state": hl.get_state()
+            }), mimetype = u'application/json')
 
 
 if __name__ == '__main__':

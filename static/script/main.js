@@ -18,7 +18,7 @@ var host = ''//location.hostname
 
 function changeImage(keyref, state) {
     var img = document.getElementById(keyref)
-    img.src = IMAGEREF[keyref]+(state)?state:''+".png"
+    img.src = IMAGEREF[keyref]+state+".png"
     return false
 }
 
@@ -26,10 +26,22 @@ document.onkeydown = function(event){
     var state = "on"
     if (event && Object.keys(KEYREF).indexOf(String(event.keyCode))>=0) {
         if (actionList[actionList.length-1] != event.keyCode){
-            actionList.push(event.keyCode)
+            if (TOGGLE.indexOf(event.keyCode) < 0) {
+                actionList.push(event.keyCode)
+            }
             httpGetAsync(host+ACTIONREF[event.keyCode], 
                 function(response) {
-                    JSON.parse(response); 
+                    if (response != undefined) {
+                        try {
+                            let r = JSON.parse(response)
+                            if (r['state'] != undefined) {
+                                state = r['state'].toLowerCase();
+                            }
+                        }
+                        catch(e) {
+                            console.log(e)
+                        }
+                    }
                     changeImage(KEYREF[event.keyCode], state);
                 }
             )
@@ -39,7 +51,7 @@ document.onkeydown = function(event){
 
 document.onkeyup = function(event){
     var state = "off"
-    if (event && Object.keys(KEYREF).indexOf(String(event.keyCode))>=0 && TOGGLES.indexOf(event.keyCode) < 0) {
+    if (event && Object.keys(KEYREF).indexOf(String(event.keyCode))>=0 && TOGGLE.indexOf(event.keyCode) < 0) {
         let idx = actionList.indexOf(event.keyCode)
         changeImage(KEYREF[event.keyCode], state)
         // check if there is any other buttons are pressed atm
@@ -62,7 +74,7 @@ function httpGetAsync(url, callback) {
     // console.log(url)
     xmlHttp.onreadystatechange = function() {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-            callback()
+            callback(xmlHttp.response)
         }
     }
     xmlHttp.open("GET", url, true)
@@ -75,6 +87,6 @@ function simulateKeyPress(key){
         get:function(){
             return this.keyCodeVal;
         }}); 
-    keyboardEvent.keyCodeVal = [key];
+    evt.keyCodeVal = key;
     document.body.dispatchEvent(evt);
 }
