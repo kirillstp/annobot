@@ -1,16 +1,24 @@
-const KEYREF = {37:"left", 38:"up", 39:"right", 40:"down"}
+
+const IMAGEREF = {"left":"../static/assets/arrow_left_",
+                  "up":"../static/assets/arrow_up_",
+                  "down":"../static/assets/arrow_down_",
+                  "right":"../static/assets/arrow_right_",
+                  "headlights":"../static/assets/headlights_"}
+const KEYREF = {37:"left", 38:"up", 39:"right", 40:"down", 49:"headlights"}
 const ACTIONREF = { 37: "/drivetrain/turn_left",
                     38: "/drivetrain/forward",
                     39: "/drivetrain/turn_right",
                     40: "/drivetrain/backward",
+                    49: "/headlights/toggle",
                     0:  "/drivetrain/stop" }
+const TOGGLE = [49]
 
 var actionList = []
 var host = ''//location.hostname
 
-function changeImage(direction, state) {
-    var img = document.getElementById(direction)
-    img.src = "../static/assets/arrow_"+direction+"_"+state+".png"
+function changeImage(keyref, state) {
+    var img = document.getElementById(keyref)
+    img.src = IMAGEREF[keyref]+(state)?state:''+".png"
     return false
 }
 
@@ -20,8 +28,9 @@ document.onkeydown = function(event){
         if (actionList[actionList.length-1] != event.keyCode){
             actionList.push(event.keyCode)
             httpGetAsync(host+ACTIONREF[event.keyCode], 
-                function(response) { 
-                    changeImage(KEYREF[event.keyCode], state)
+                function(response) {
+                    JSON.parse(response); 
+                    changeImage(KEYREF[event.keyCode], state);
                 }
             )
         }
@@ -30,7 +39,7 @@ document.onkeydown = function(event){
 
 document.onkeyup = function(event){
     var state = "off"
-    if (event && Object.keys(KEYREF).indexOf(String(event.keyCode))>=0) {
+    if (event && Object.keys(KEYREF).indexOf(String(event.keyCode))>=0 && TOGGLES.indexOf(event.keyCode) < 0) {
         let idx = actionList.indexOf(event.keyCode)
         changeImage(KEYREF[event.keyCode], state)
         // check if there is any other buttons are pressed atm
@@ -50,7 +59,7 @@ document.onkeyup = function(event){
 
 function httpGetAsync(url, callback) {
     var xmlHttp = new XMLHttpRequest();
-    console.log(url)
+    // console.log(url)
     xmlHttp.onreadystatechange = function() {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
             callback()

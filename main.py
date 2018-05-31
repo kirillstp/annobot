@@ -1,6 +1,7 @@
 from flask import Flask, render_template, Response
 from components import Camera
 from components import Drivetrain
+from components import Headlights
 from config.configuration import Config
 from sensorplatform.controller import cleanup
 import os
@@ -9,6 +10,7 @@ config_path = 'config.json'
 configuration = Config('config.json').config()
 
 dt = Drivetrain(configuration)
+hl = Headlights(configuration)
 
 app = Flask(__name__)
 
@@ -53,7 +55,12 @@ def drivetrain_turn_left():
 def drivetrain_turn_right():
     dt.turn_right()
     return 'OK'
-    
+
+@app.route('/headlights/toggle')
+def headlights_toggle():
+    hl.toggle()
+    return hl.get_state()
+
 
 if __name__ == '__main__':
     try:

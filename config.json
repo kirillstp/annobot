@@ -2,13 +2,18 @@
     "motor": {
         "left": { 
             "enable": "12",
-            "input1": "10",
-            "input2": "8"
+            "input1": "18",
+            "input2": "16",
+            "power_percent": "90"
         },
         "right" : {
-            "enable": "11",
-            "input1": "13",
-            "input2": "15"
+            "enable": "33",
+            "input1": "29",
+            "input2": "31",
+            "power_percent": "90"
         }
+    },
+    "headlights": {
+        "enable": 36
     }    
 }
