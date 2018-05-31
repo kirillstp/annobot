@@ -68,3 +68,13 @@ function httpGetAsync(url, callback) {
     xmlHttp.open("GET", url, true)
     xmlHttp.send(null)
 }
+
+function simulateKeyPress(key){
+    var evt = new KeyboardEvent('keydown', {bubbles : true})
+    Object.defineProperty(evt, 'keyCode', {
+        get:function(){
+            return this.keyCodeVal;
+        }}); 
+    keyboardEvent.keyCodeVal = [key];
+    document.body.dispatchEvent(evt);
+}
