@@ -1,8 +1,9 @@
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, request
 import json
 from components import Camera
 from components import Drivetrain
 from components import Headlights
+from components import Speaker
 from config.configuration import Config
 from sensorplatform.controller import cleanup
 import os
@@ -12,7 +13,8 @@ configuration = Config('config.json').config()
 
 dt = Drivetrain(configuration)
 hl = Headlights(configuration)
-
+spkr = Speaker()
+ 
 app = Flask(__name__)
 
 @app.route('/')
@@ -64,6 +66,13 @@ def headlights_toggle():
             "state": hl.get_state()
             }), mimetype = u'application/json')
 
+@app.route('/speaker/toggle')
+def sound_toggle():
+    title=request.args.get('title', default = 1, type = str)
+    spkr.toggle(title)
+    return  Response(json.dumps({
+        "state": spkr.get_state(title)
+        }), mimetype = u'application/json')
 
 if __name__ == '__main__':
     try:

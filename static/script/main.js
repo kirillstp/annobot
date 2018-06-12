@@ -3,15 +3,17 @@ const IMAGEREF = {"left":"../static/assets/arrow_left_",
                   "up":"../static/assets/arrow_up_",
                   "down":"../static/assets/arrow_down_",
                   "right":"../static/assets/arrow_right_",
-                  "headlights":"../static/assets/headlights_"}
-const KEYREF = {37:"left", 38:"up", 39:"right", 40:"down", 49:"headlights"}
+                  "headlights":"../static/assets/headlights_",
+                  "Final":"../static/assets/Final_"}
+const KEYREF = {37:"left", 38:"up", 39:"right", 40:"down", 49:"headlights", 50:"Final"}
 const ACTIONREF = { 37: "/drivetrain/turn_left",
                     38: "/drivetrain/forward",
                     39: "/drivetrain/turn_right",
                     40: "/drivetrain/backward",
                     49: "/headlights/toggle",
+                    50: "/speaker/toggle?title=Final.mp3",
                     0:  "/drivetrain/stop" }
-const TOGGLE = [49]
+const TOGGLE = [49,50]
 
 var actionList = []
 var host = ''//location.hostname
