@@ -4,12 +4,10 @@ from sensorplatform.motor import Motor
 class Drivetrain:
     def __init__(self, config):
         self.motor_config = config['motor']
-        self.left_motor = Motor(forward_pin = self.motor_config['left']['input1']
-                                ,backward_pin = self.motor_config['left']['input2']
+        self.left_motor = Motor(phase_pin = self.motor_config['left']['phase']
                                 ,enable_pin = self.motor_config['left']['enable']
                                 ,power_percent = self.motor_config['left']['power_percent'])
-        self.right_motor = Motor(forward_pin = self.motor_config['right']['input1']
-                                ,backward_pin = self.motor_config['right']['input2']
+        self.right_motor = Motor(phase_pin = self.motor_config['right']['phase']
                                 ,enable_pin = self.motor_config['right']['enable']
                                 ,power_percent = self.motor_config['right']['power_percent'])
         self._running = False

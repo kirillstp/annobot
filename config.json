@@ -1,19 +1,25 @@
 {
     "motor": {
         "left": { 
-            "enable": "12",
-            "input1": "18",
-            "input2": "16",
-            "power_percent": "90"
+            "enable": "33",
+            "phase": "31",
+            "power_percent": "75"
         },
         "right" : {
-            "enable": "33",
-            "input1": "29",
-            "input2": "31",
-            "power_percent": "90"
+            "enable": "32",
+            "phase": "29",
+            "power_percent": "75"
         }
     },
     "headlights": {
         "enable": 36
-    }    
+    },
+    "tv": {
+        "turn_off": "2FD48B7",
+        "mute": "2FD08F7",
+        "volume_up": "2FD58A7",
+        "volume_down": "2FD7887",
+        "channel_up": "377111",
+        "channel_down": "36F121"
+    }
 }

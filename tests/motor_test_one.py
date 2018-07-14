@@ -3,9 +3,8 @@ from time import sleep
 
 class MotorTest(object): 
 
-    PINS = {'Motor1_Enable':11,
-            'Motor1_Forward':13,
-            'Motor1_Backward':15}
+    PINS = {'Motor1_Enable':33,
+            'Motor1_Phase':31}
 
     def __init__(self):
         pass
