@@ -4,6 +4,7 @@ from components import Camera
 from components import Drivetrain
 from components import Headlights
 from components import Speaker
+from components import IRLED
 from config.configuration import Config
 from sensorplatform.controller import cleanup
 import os
@@ -14,7 +15,8 @@ configuration = Config('config.json').config()
 dt = Drivetrain(configuration)
 hl = Headlights(configuration)
 spkr = Speaker()
- 
+irled= IRLED(configuration)
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -73,6 +75,12 @@ def sound_toggle():
     return  Response(json.dumps({
         "state": spkr.get_state(title)
         }), mimetype = u'application/json')
+
+@app.route('/tv_remote/press')
+def tv_remote_press():
+    button = request.args.get('button', default="power_test", type = str)
+    irled.run_code(button)
+    return  "OK"
 
 if __name__ == '__main__':
     try:

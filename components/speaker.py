@@ -15,7 +15,7 @@ class Speaker:
         if os.path.exists(filepath):
             print("Playing {}".format(filepath))
             run = subprocess.Popen(['mpg123', self.music_player_args, filepath])
-            sleep(3)
+            sleep(1)
             self.proc[filename] = run
             return 0
         else:

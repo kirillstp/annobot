@@ -14,12 +14,7 @@
     "headlights": {
         "enable": 36
     },
-    "tv": {
-        "turn_off": "2FD48B7",
-        "mute": "2FD08F7",
-        "volume_up": "2FD58A7",
-        "volume_down": "2FD7887",
-        "channel_up": "377111",
-        "channel_down": "36F121"
+    "ir_led": {
+        "enable": 18
     }
 }

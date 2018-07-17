@@ -4,14 +4,18 @@ const IMAGEREF = {"left":"../static/assets/arrow_left_",
                   "down":"../static/assets/arrow_down_",
                   "right":"../static/assets/arrow_right_",
                   "headlights":"../static/assets/headlights_",
-                  "Final":"../static/assets/Final_"}
-const KEYREF = {37:"left", 38:"up", 39:"right", 40:"down", 49:"headlights", 50:"Final"}
+                  "Final":"../static/assets/Final_",}
+const KEYREF = {37:"left", 38:"up", 39:"right", 40:"down", 49:"headlights", 50:"Final",
+                52:"tv_power", 53:"tv_mute", 54:"tv_volup"}
 const ACTIONREF = { 37: "/drivetrain/turn_left",
                     38: "/drivetrain/forward",
                     39: "/drivetrain/turn_right",
                     40: "/drivetrain/backward",
                     49: "/headlights/toggle",
                     50: "/speaker/toggle?title=Final.mp3",
+                    52: "/tv_remote/press?button=power",
+                    53: "/tv_remote/press?button=mute",
+                    54: "/tv_remote/press?button=v_up",
                     0:  "/drivetrain/stop" }
 const TOGGLE = [49,50]
 
@@ -91,4 +95,12 @@ function simulateKeyPress(key){
         }}); 
     evt.keyCodeVal = key;
     document.body.dispatchEvent(evt);
+}
+
+function simpleButton(key) {
+    if (Object.keys(KEYREF).indexOf(String(key))>=0) {
+        httpGetAsync(host+ACTIONREF[key], 
+            function(response) {}
+        )
+    }
 }
