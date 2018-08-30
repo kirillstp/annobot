@@ -10,7 +10,7 @@ class Camera(BaseCamera):
         with picamera.PiCamera() as camera:
             # let camera warm up
             camera.resolution = (640, 480)
-            camera.rotation = 180
+            camera.rotation = 0
             time.sleep(2)
 
             stream = io.BytesIO()

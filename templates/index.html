@@ -10,46 +10,83 @@
             <h3 class="subtitle">Build To Annoy</h3>
         </div>
         <div class="flex-container center">
-            <input id="headlights" 
-                   onclick="simulateKeyPress(49)" 
-                   type="image" 
-                   src="../static/assets/headlights_off.png" 
-                   width="50"/>
-            <input id="Final" 
+            <div class="flex-container center">
+                <input id="headlights" 
+                    onclick="simulateKeyPress(49)" 
+                    type="image" 
+                    src="../static/assets/headlights_off.png" 
+                    width="50"/>
+                <span class="spacer"></span>
+                <input id="Final" 
                     onclick="simulateKeyPress(50)" 
                     type="image" 
                     src="../static/assets/Final_off.png" 
                     width="50"/>
-            <input id="tv_power" 
-                    onclick="simpleButton(52)"
-                    type="image"
-                    src="../static/assets/tv_power_off.png"
-                    width="50">
-            <input id="tv_mute" 
-                    onclick="simpleButton(53)"
-                    type="image"
-                    src="../static/assets/tv_mute_off.png"
-                    width="50">
-            <input id="tv_volup" 
-                    onclick="simpleButton(54)"
-                    type="image"
-                    src="../static/assets/tv_vol_off.png"
-                    width="50">
-        </div>
-        <div class="flex-container center">
-            <img id="up"  src="../static/assets/arrow_up_off.png" width="100">
+                <span class="spacer"></span>
+                <input id="cat1" 
+                    onclick="simulateKeyPress(51)" 
+                    type="image" 
+                    src="../static/assets/cat1_off.png" 
+                    width="50"/>
+                <span class="spacer"></span>
+            </div>
+            <img id="forward"  src="../static/assets/arrow_forward_off.png" width="100">
+            <div class="flex-container center">
+                <span class="spacer"></span>
+                    <input id="cat2" 
+                    onclick="simulateKeyPress(52)" 
+                    type="image" 
+                    src="../static/assets/cat2_off.png" 
+                    width="50"/>
+                <span class="spacer"></span>
+                <input id="tv_power" 
+                        onclick="simpleButton(53)"
+                        type="image"
+                        src="../static/assets/tv_power_off.png"
+                        width="50">
+                <span class="spacer"></span>
+                <input id="tv_mute" 
+                        onclick="simpleButton(54)"
+                        type="image"
+                        src="../static/assets/tv_mute_off.png"
+                        width="50">
+                <span class="spacer"></span>
+                <!-- <input id="tv_volup" 
+                        onclick="simpleButton(55)"
+                        type="image"
+                        src="../static/assets/tv_vol_off.png"
+                        width="50"> -->
+            </div>
         </div>
         <div class="flex-container center">
             <span>
-                <img id="left" src="../static/assets/arrow_left_off.png" width="100">
+                <div class="flex-container center">
+                    <img id="rotate_left" src="../static/assets/rotate_left_off.png" width="75">
+                </div>
+                <div class="flex-container center">
+                    <img id="rotate_right" src="../static/assets/rotate_right_off.png" width="75">
+                </div>
+                <div>
+                    <img id="left" src="../static/assets/arrow_left_off.png" width="100">
+                </div>
             </span>
+
             <img src="{{ url_for('video_feed') }}">
+
             <span>
-                <img id="right" src="../static/assets/arrow_right_off.png" width="100">
+                <div class="flex-container center">
+                    <img id="up" src="../static/assets/up_off.png" width="75">
+                </div>
+                <div class="flex-container center">
+                    <img id="down" src="../static/assets/down_off.png" width="75">
+                </div>
+                <div>
+                    <img id="right" src="../static/assets/arrow_right_off.png" width="100">
+                </div>
             </span>
         </div>
         <div class="flex-container center">
-            <img id="down" src="../static/assets/arrow_down_off.png" width="100">
+            <img id="backward" src="../static/assets/arrow_backward_off.png" width="100">
         </div>
     </body>
 </html>

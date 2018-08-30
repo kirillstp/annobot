@@ -1,22 +1,37 @@
 
 const IMAGEREF = {"left":"../static/assets/arrow_left_",
-                  "up":"../static/assets/arrow_up_",
-                  "down":"../static/assets/arrow_down_",
+                  "forward":"../static/assets/arrow_forward_",
+                  "backward":"../static/assets/arrow_backward_",
                   "right":"../static/assets/arrow_right_",
                   "headlights":"../static/assets/headlights_",
-                  "Final":"../static/assets/Final_",}
-const KEYREF = {37:"left", 38:"up", 39:"right", 40:"down", 49:"headlights", 50:"Final",
-                52:"tv_power", 53:"tv_mute", 54:"tv_volup"}
+                  "Final":"../static/assets/Final_",
+                  "cat1":"../static/assets/cat1_",
+                  "cat2":"../static/assets/cat2_",
+                  "rotate_left":"../static/assets/rotate_left_",
+                  "rotate_right":"../static/assets/rotate_right_",
+                  "down":"../static/assets/down_",
+                  "up":"../static/assets/up_"}
+const KEYREF = {37:"left", 38:"forward", 39:"right", 40:"backward", 49:"headlights", 50:"Final",
+                51:"cat1", 52:"cat2",
+                53:"tv_power", 54:"tv_mute", 55:"tv_volup", 188:"rotate_left", 190: "rotate_right",
+                191: "down", 222: "up"}
+
 const ACTIONREF = { 37: "/drivetrain/turn_left",
                     38: "/drivetrain/forward",
                     39: "/drivetrain/turn_right",
                     40: "/drivetrain/backward",
                     49: "/headlights/toggle",
                     50: "/speaker/toggle?title=Final.mp3",
-                    52: "/tv_remote/press?button=power",
-                    53: "/tv_remote/press?button=mute",
-                    54: "/tv_remote/press?button=v_up",
-                    0:  "/drivetrain/stop" }
+                    51: "/speaker/toggle?title=cat1.mp3",
+                    52: "/speaker/toggle?title=cat2.mp3",
+                    53: "/tv_remote/press?button=power",
+                    54: "/tv_remote/press?button=mute",
+                    55: "/tv_remote/press?button=v_up",
+                    188: "/platform/rotate_left",
+                    190: "/platform/rotate_right",
+                    191: "/platform/down",
+                    222: "/platform/up",
+                    0:  "/stop" }
 const TOGGLE = [49,50]
 
 var actionList = []

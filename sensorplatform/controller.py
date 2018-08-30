@@ -26,12 +26,12 @@ class Controller:
     
 class pwm:
     def __init__(self, pin, hz):
-        self._pin = int(pin)
+        self._pin = int(pin) 
         self._pwm_ctrl = GPIO.PWM(self._pin,int(hz))
         self._duty_cycle = 100
     
     def start(self):
-        self._pwm_ctrl.start(self._duty_cycle)
+        self._pwm_ctrl.start(self.duty_cycle)
 
     def stop(self):
         self._pwm_ctrl.stop()
@@ -43,4 +43,5 @@ class pwm:
     @duty_cycle.setter
     def duty_cycle(self, value):
         self._pwm_ctrl.ChangeDutyCycle(value)
+        print("DUTY CYCLE SET {}".format(value))
         self._duty_cycle = value

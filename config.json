@@ -1,12 +1,12 @@
 {
     "motor": {
         "left": { 
-            "enable": "33",
+            "enable": "32",
             "phase": "31",
             "power_percent": "75"
         },
         "right" : {
-            "enable": "32",
+            "enable": "33",
             "phase": "29",
             "power_percent": "75"
         }
@@ -15,6 +15,10 @@
         "enable": 36
     },
     "ir_led": {
-        "enable": 18
+        "enable": 4
+    },
+    "platform":{
+        "up_down": "11",
+        "rotate": "12"
     }
 }

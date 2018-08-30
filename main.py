@@ -5,6 +5,7 @@ from components import Drivetrain
 from components import Headlights
 from components import Speaker
 from components import IRLED
+from components import Platform
 from config.configuration import Config
 from sensorplatform.controller import cleanup
 import os
@@ -16,6 +17,7 @@ dt = Drivetrain(configuration)
 hl = Headlights(configuration)
 spkr = Speaker()
 irled= IRLED(configuration)
+platform = Platform(configuration)
 
 app = Flask(__name__)
 
@@ -46,8 +48,9 @@ def drivetrain_backward():
     dt.drive_backward()
     return 'OK'
 
-@app.route('/drivetrain/stop')
-def drivetrain_stop():
+@app.route('/stop')
+def stop():
+    platform.up_down_cycle = 0
     dt.stop()
     return 'OK'
 
@@ -58,6 +61,7 @@ def drivetrain_turn_left():
 
 @app.route('/drivetrain/turn_right')
 def drivetrain_turn_right():
+    
     dt.turn_right()
     return 'OK'
 
@@ -81,6 +85,26 @@ def tv_remote_press():
     button = request.args.get('button', default="power_test", type = str)
     irled.run_code(button)
     return  "OK"
+
+@app.route('/platform/rotate_left')
+def platform_rotate_left():
+    platform.rotate_left()
+    return "OK"
+
+@app.route('/platform/rotate_right')
+def platform_rotate_right():
+    platform.rotate_right()
+    return "OK"
+
+@app.route('/platform/up')
+def platform_up():
+    platform.up()
+    return "OK"
+
+@app.route('/platform/down')
+def platform_down():
+    platform.down()
+    return "OK"
 
 if __name__ == '__main__':
     try:
