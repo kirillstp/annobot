@@ -15,7 +15,7 @@
         "enable": 36
     },
     "ir_led": {
-        "enable": 4
+        "enable": 22
     },
     "platform":{
         "up_down": "11",

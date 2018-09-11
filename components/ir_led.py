@@ -1,17 +1,21 @@
 import subprocess
 from time import sleep
 class IRLED: 
-    # IR LED class is a weirdo:
-    #   - does a wtf Popen call to irrp.py since i do not have time to refactor irrp.py
-    #           (HINT: Irrp.py written with a f***** argparser and bagillion args)
-    #   - uses BCM pin # on RPi instead of board # since i do not have time to refactor irrp.py
+    # Configure lirc:
+    # Copy hardware.conf to /etc/lirc/hardware.conf
+    # In /etc/modules add:
+    #       lirc_dev
+    #       lirc_rpi gpio_in_pin=23 gpio_out_pin=22
+    # In /boot/config.txt add:
+    #       dtoverlay=lirc-rpi,gpio_in_pin=23,gpio_out_pin=22
+    # In /etc/lirc/lirc_options.conf change driver to default
+    # To use:
+    # irsend SEND_ONCE toshiba KEY_POWER
+
 
     def __init__(self,config):
-        self.ir_led_pin = config["ir_led"]["enable"]
-        self.pigpiod = subprocess.call(['sudo', 'pigpiod'])
+        pass
 
     def run_code(self, code):
-        # code options: mute, power, v_down, v_up, power_test
-        # for more info see ir_codes
-        # E.g ./irrp.py -p -g 18 -f ir_codes mute
-        run = subprocess.Popen(['./irrp.py', '-p', '-g', str(self.ir_led_pin), '-f', 'ir_codes', code])
+        # code options /etc/lirc/lircd.conf.d/
+        run = subprocess.Popen(['irsend', 'SEND_ONCE', 'toshiba', str(code)])

@@ -40,28 +40,31 @@ def video_feed():
 
 @app.route('/drivetrain/forward')
 def drivetrain_forward():
+    platform.stop()
     dt.drive_forward()
     return 'OK'
 
 @app.route('/drivetrain/backward')
 def drivetrain_backward():
+    platform.stop()
     dt.drive_backward()
     return 'OK'
 
 @app.route('/stop')
 def stop():
-    platform.up_down_cycle = 0
+    platform.stop()
     dt.stop()
     return 'OK'
 
 @app.route('/drivetrain/turn_left')
 def drivetrain_turn_left():
+    platform.stop()
     dt.turn_left()
     return 'OK'
 
 @app.route('/drivetrain/turn_right')
 def drivetrain_turn_right():
-    
+    platform.stop()
     dt.turn_right()
     return 'OK'
 
@@ -105,6 +108,7 @@ def platform_up():
 def platform_down():
     platform.down()
     return "OK"
+
 
 if __name__ == '__main__':
     try:

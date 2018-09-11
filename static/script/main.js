@@ -24,15 +24,15 @@ const ACTIONREF = { 37: "/drivetrain/turn_left",
                     50: "/speaker/toggle?title=Final.mp3",
                     51: "/speaker/toggle?title=cat1.mp3",
                     52: "/speaker/toggle?title=cat2.mp3",
-                    53: "/tv_remote/press?button=power",
-                    54: "/tv_remote/press?button=mute",
-                    55: "/tv_remote/press?button=v_up",
+                    53: "/tv_remote/press?button=KEY_POWER",
+                    54: "/tv_remote/press?button=KEY_MUTE",
+                    55: "/tv_remote/press?button=KEY_VOLUMEUP",
                     188: "/platform/rotate_left",
                     190: "/platform/rotate_right",
                     191: "/platform/down",
                     222: "/platform/up",
                     0:  "/stop" }
-const TOGGLE = [49,50]
+const TOGGLE = [49,50,51,52]
 
 var actionList = []
 var host = ''//location.hostname

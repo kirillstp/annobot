@@ -3,7 +3,7 @@ import threading
 from time import sleep
 class Platform:
     # Two servos controlling up-down and rotation of the camera rack
-    UP_DOWN_RANGE = (0.1,3.2) # Continious rotation servo, max - down, min - up
+    UP_DOWN_RANGE = (0.1,20) # Continious rotation servo, max - down, min - up
     ROTATE_RANGE = (2,12) # max - left, min - right
     def __init__(self, config):
         self.platform_config = config['platform']
@@ -60,3 +60,6 @@ class Platform:
 
     def down(self):
         self.up_down_cycle = min(self.UP_DOWN_RANGE)
+
+    def stop(self):
+        self.up_down_cycle = 0
